@@ -3759,10 +3759,19 @@ zones.wabalsebil:defineUpgrades({
 
 --Airports
 --Qeshm (Includes Naval Patrol Spawns, red only)
+--Lavan (Treat as SAM Island and CAP spawn)
+--Bandar Lengeh (Treat as CAP spawn)
+--Lar (Should be supply point, have lots of trucks, SA-5 or SA-10 SAM and a CAP, and SEAD spawn for red )
+--
 
 --Road Base
 --Gori
+--SayehKhvosh (Helo base to feed supplys from LAR to Bandar Lengeh, Gori and Qeshm)
 
+
+
+--RED Generator
+--Sarhez (Lots of trucks, SA6 SAM and 2 SHORAD systems)
 
 
 
@@ -4118,74 +4127,7 @@ timer.scheduleFunction(function(param, time)
 end, {}, timer.getTime()+180)
 
 
-activeConvoys = {}
 
 
-offMapConvoy = 'supply-convoy-red-2'
-offMapConvoyTgt = 'Havadarya'
-offMapConvoyPayload = 50000
-
-if Group.getByName(offMapConvoy) then
-	Group.getByName(offMapConvoy):destroy()
-end
-
---Off Map Convoy Spawner
-timer.scheduleFunction(function(param,time)
-	local randTest = math.random()
-	if randTest > 0 then
-		--local gRoute = mist.getGroupData(offMapConvoy,true)
-		initLog:info("Trying to Clone: $1", offMapConvoy)
-		local info = mist.cloneGroup(offMapConvoy,10)
-		
-		if info then
-			initLog:info("Convoy Clone: $1", info.name)	
-		--	env.info('INIT: Supply Convoy '..info..' Cloned')
-		--	Group.getByName(info):activate()
-			local toInsert = {}
-			toInsert.name = info.name
-			toInsert.tgt = offMapConvoyTgt
-			table.insert(activeConvoys, toInsert)
-		end
-		return time+(60*60)
-	else 
-		return time+60
-	end
-end, {}, timer.getTime()+200)
-
-
---Check on the active trains
-timer.scheduleFunction(function(param, time)
-	env.info('Running Check Convoy Loop')
-	initLog:info("activeConvoys: $1",activeConvoys)
-	for i,convoyTab in ipairs(activeConvoys) do
-		local cName = convoyTab.name
-		local cTgt = convoyTab.tgt
-		initLog:info("Checking in on $1 heading for $2",cName,cTgt)
-		if Group.getByName(cName):getSize() == 0 then
-			initLog:info("Group $1 has died, removing from active convoys",cName)
-			Group.getByName(cName):destory()
-			table.remove(activeConvoys, i)
-		else
-			local un1 = Group.getByName(cName):getUnit(1)
-			if mist.vec.mag(un1:getVelocity()) <= 0.01 and CustomZone:getByName(cTgt):isInside(mist.getLeadPos(cName)) then
-				initLog:info("Group $1 has arrived at destination, $2",cName,cTgt)
-				local delivered = math.floor(offMapConvoyPayload * Group.getByName(cName):getSize()/10)
-				local zoneToResupply = zones.havadarya:getZoneByName(cTgt)
-				if zoneToResupply then
-					zoneToResupply:addResource(delivered)
-					initLog:info("Zone $1 has been resupplied with $2 supplies",cTgt,delivered)
-				else
-					initLog:info("Couldn't find zone $1, adding supplies to the expected default",cTgt)
-					zones.havadarya:addResource(delivered)
-				end
-				Group.getByName(cName):destroy()
-				table.remove(activeConvoys, i)
-			end
-		end
-	end
-	
-
-	return time+10
-end, {}, timer.getTime()+300)
 
 
