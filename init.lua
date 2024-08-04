@@ -3754,20 +3754,187 @@ zones.wabalsebil:defineUpgrades({
 
 --------------------- END: WabAlSebil ----------------------------------------------------------------------------------
 
+------------------- START: Qeshm -----------DONE-----------------------------------------------------------------------
+qeshmNavalWP = { ['patrol'] = { "NavWpt-CQ53", 
+								 "NavWpt-CQ70", "NavWpt-CP47", "NavWpt-BN67", "NavWpt-BP42", "NavWpt-CP04",
+								 "NavWpt-CQ70", "NavWpt-CP47", "NavWpt-BN67", "NavWpt-BP42", "NavWpt-CP04",
+								 "NavWpt-CQ70", "NavWpt-CP47", "NavWpt-BN67", "NavWpt-BP42", "NavWpt-CP04",
+								 "NavWpt-CQ70", "NavWpt-CP47", "NavWpt-BN67", "NavWpt-BP42", "NavWpt-CP04",
+							 }
+			  }
+
+zones.qeshm = ZoneCommand:new("Qeshm")
+zones.qeshm.initialState = { side = 1 }
+zones.qeshm.airbaseName = 'Qeshm Island'
+zones.qeshm.maxResource = 50000
+zones.qeshm.motherland = true
+zones.qeshm:defineUpgrades({
+    [1] = {
+        presets.upgrades.basic.dispatchBarracks:extend({
+            name='qeshm-barracks-red',
+            products = {
+				presets.special.red.infantry:extend({name='qeshm-defense-red'}),
+				presets.defenses.red.infantry2:extend({name='qeshm-infantry-red-2'}),
+            }
+        }),
+        presets.upgrades.supply.storehouse:extend({
+            name='qeshm-store-red',
+            products = {
+				presets.missions.supply.helo:extend({name='qeshm-supply-red-1'}),
+				presets.missions.supply.helo:extend({name='qeshm-supply-red-2'}),
+				presets.missions.supply.helo:extend({name='qeshm-supply-red-3'}),
+				presets.missions.supply.convoy:extend({name='qeshm-convoy-red-1'}),
+				presets.missions.supply.convoy:extend({name='qeshm-convoy-red-2'}),
+            }
+        }),
+        presets.upgrades.airdef.antenna:extend({
+            name='qeshm-antenna-red',
+            products = {
+				presets.defenses.red.sa6:extend({name='qeshm-sam-red'}),
+				presets.defenses.red.shorad1:extend({name='qeshm-shorad-red'}),
+            }
+        }),
+		presets.upgrades.attack.bigService:extend({
+            name='qeshm-service-red',
+            products = {
+				presets.missions.attack.surface:extend({name='qeshm-assault-red-1'}),
+				presets.missions.patrol.naval:extend({name='qeshm-patrol-fac-red-1',navalWP = qeshmNavalWP, cost = 400}),
+				presets.missions.patrol.naval:extend({name='qeshm-patrol-fac-red-2',navalWP = qeshmNavalWP, cost = 500}),
+				presets.missions.patrol.naval:extend({name='qeshm-patrol-fac-red-3',navalWP = qeshmNavalWP, cost = 600}),
+            }
+        }),
+		presets.upgrades.airdef.hardBunker:extend({
+			name='qeshm-bunker-red',
+			products = {
+				presets.missions.patrol.aircraft:extend({name='qeshm-patrol-red-1'}),
+				presets.missions.attack.cas:extend({name='qeshm-cas-red-1'}),
+				presets.missions.attack.sead:extend({name='qeshm-sead-red-1'}),
+			}
+		})
+    },
+    [2] = {
+        presets.upgrades.basic.dispatchBarracks:extend({
+            name='qeshm-barracks-blue',
+            products = {
+				presets.special.blue.infantry:extend({name='qeshm-defense-blue'}),
+				presets.defenses.blue.infantry3:extend({name='qeshm-infantry-blue-1'}),
+				presets.defenses.blue.infantry2:extend({name='qeshm-infantry-blue-2'}),
+            }
+        }),
+        presets.upgrades.supply.storehouse:extend({
+            name='qeshm-store-blue',
+            products = {
+				presets.missions.supply.helo:extend({name='qeshm-supply-blue-1'}),
+				presets.missions.supply.helo:extend({name='qeshm-supply-blue-2'}),
+				presets.missions.supply.helo:extend({name='qeshm-supply-blue-3'}),
+            }
+        }),
+        presets.upgrades.airdef.antenna:extend({
+            name='qeshm-antenna-blue',
+            products = {
+                presets.defenses.blue.nasams:extend({name='qeshm-sam-blue'}),
+				presets.defenses.blue.shorad2:extend({name='qeshm-shorad-blue'}),
+            }
+        }),
+		presets.upgrades.attack.bigService:extend({
+            name='qeshm-service-blue',
+            products = {
+				presets.missions.supply.helo:extend({name='qeshm-supply-blue-4'}),
+				presets.missions.supply.helo:extend({name='qeshm-supply-blue-5'}),
+            }
+        }),
+		presets.upgrades.airdef.hardBunker:extend({
+			name='qeshm-bunker-blue',
+			products = {
+				presets.missions.patrol.aircraft:extend({name='qeshm-patrol-blue-1'}),
+				presets.missions.attack.strike:extend({name='qeshm-strike-blue-1'}),
+				presets.missions.attack.sead:extend({name='qeshm-sead-blue-1'}),
+			}
+		})
+    },
+})
+
+--------------------- END: Qeshm ----------------------------------------------------------------------------------
+
+------------------- START: Gori ------------DONE----------------------------------------------------------------------
+
+zones.gori = ZoneCommand:new("Gori")
+zones.gori.initialState = { side = 1 }
+zones.gori.maxResource = 25000
+zones.gori:defineUpgrades({
+    [1] = {
+        presets.upgrades.basic.watchTwr:extend({
+            name='gori-tower-red',
+            products = {
+				presets.defenses.red.infantry1:extend({name='gori-infantry-red'}),
+				presets.defenses.red.infantry2:extend({name='gori-infantry-red-2'}),
+				presets.special.red.infantry:extend({name='gori-defense-red'})
+            }
+        }),
+        presets.upgrades.basic.tent:extend({
+			name='gori-tent-red',
+			products = {
+				presets.defenses.red.shorad1:extend({name='gori-shorad-red'})
+			}
+		}),
+		presets.upgrades.attack.smallService:extend({
+			name='gori-service-red',
+			products = {
+			}
+		}),
+		presets.upgrades.supply.generator:extend({
+			name='gori-generator-red',
+			products = {
+				presets.missions.supply.helo:extend({name='gori-supply-red-1'}),
+				presets.missions.supply.helo:extend({name='gori-supply-red-2'}),
+				
+			}
+		})
+    },
+    [2] = {
+        presets.upgrades.basic.watchTwr:extend({
+            name='gori-tower-blue',
+            products = {
+				presets.defenses.blue.infantry1:extend({name='gori-infantry-blue'}),
+				presets.special.blue.infantry:extend({name='gori-defense-blue'})
+            }
+        }),
+        presets.upgrades.basic.tent:extend({
+			name='gori-tent-blue',
+			products = {
+				presets.defenses.blue.shorad1:extend({name='gori-shorad-blue'})
+			}
+		}),
+		presets.upgrades.attack.smallService:extend({
+			name='gori-service-blue',
+			products = {
+				presets.missions.attack.surface:extend({name='gori-assault-blue-1'}),
+			}
+		}),
+		presets.upgrades.supply.generator:extend({
+			name='gori-generator-blue',
+			products = {
+				presets.missions.supply.helo:extend({name='gori-supply-blue-1'}),
+				presets.missions.supply.helo:extend({name='gori-supply-blue-2'}),
+			}
+		})
+    }
+})
+
+--------------------- END: Gori ----------------------------------------------------------------------------------
+
 
 
 
 --Airports
---Qeshm (Includes Naval Patrol Spawns, red only)
 --Lavan (Treat as SAM Island and CAP spawn)
 --Bandar Lengeh (Treat as CAP spawn)
 --Lar (Should be supply point, have lots of trucks, SA-5 or SA-10 SAM and a CAP, and SEAD spawn for red )
 --
 
 --Road Base
---Gori
 --SayehKhvosh (Helo base to feed supplys from LAR to Bandar Lengeh, Gori and Qeshm)
-
+--Gowdegaz
 
 
 --RED Generator
@@ -3843,6 +4010,11 @@ zones.wabalsebil:defineUpgrades({
 	cm:addConnection('Tunb','SirriIsland',true) --
 	cm:addConnection('Kish','SirriIsland',true) --
 	cm:addConnection('Harbor','SirriIsland',true) --
+	cm:addConnection('Qeshm','Havadarya',true) --
+	cm:addConnection('Qeshm','Tunb',true) --
+	cm:addConnection('Qeshm','Gori',false) --
+	cm:addConnection('Gori','Tunb',true) --
+	cm:addConnection('Gori','Kish',true) --
 --	cm:addConnection('SirAbuNuayr','SirriIsland',true) --
 --  cm:addConnection('SirAbuNuayr','Harbor',true) --
 	--cm:addConnection('Kish','AlDhafra',true)
