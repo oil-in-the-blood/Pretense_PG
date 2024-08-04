@@ -4709,6 +4709,18 @@ do
 		setmetatable(obj, self)
 		self.__index = self
 		
+		
+		env.info('Zone: '..obj.name)
+		local lat, lon, alt = coord.LOtoLL(point)
+		env.info('LL: '..mist.tostringLL(lat,lon,3))
+		env.info('LL: '..mist.tostringLL(lat,lon,3,true))
+		local grid = coord.LLtoMGRS(lat,lon)
+		env.info('MGRS: '..grid.UTMZone..' '..grid.MGRSDigraph..' '..grid.Easting..' '..grid.Northing)
+		env.info('Alt:  '..land.getHeight({x = point.x, y = point.z}))
+		
+		
+		
+		
 		obj:refreshText()
 		obj:start()
 		obj:refreshSpawnBlocking()

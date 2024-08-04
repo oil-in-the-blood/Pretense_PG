@@ -563,7 +563,7 @@ presets = {
 				cost = 4000,
 				type = 'upgrade',
 				addedStorage = 10000,
-				income = 100,
+				--income = 100,
 				template = "shipment-storehouse"
 			}),
 			fuelTruck = Preset:new({
@@ -594,21 +594,21 @@ presets = {
 				display='Factory',
 				cost = 2000,
 				type ='upgrade',
-				income = 20,
+				income = 100,
 				template = "factory-1"
 			}),
 			factory2 = Preset:new({
 				display='Factory',
 				cost = 2000,
 				type ='upgrade',
-				income = 20,
+				income = 100,
 				template = "factory-2"
 			}),
 			factory3 = Preset:new({
 				display='Factory',
 				cost = 2000,
 				type ='upgrade',
-				income = 20,
+				income = 100,
 				template = "new-factory"
 			}),
 			factoryTank = Preset:new({
@@ -889,6 +889,12 @@ presets = {
 			convoy = Preset:new({
 				display = 'Supply convoy',
 				cost = 4000,
+				type = 'mission',
+				missionType = ZoneCommand.missionTypes.supply_convoy
+			}),
+			convoyBig = Preset:new({
+				display = 'Large supply convoy',
+				cost = 6000,
 				type = 'mission',
 				missionType = ZoneCommand.missionTypes.supply_convoy
 			}),
@@ -1400,8 +1406,14 @@ havadaryaNavalSupplyPts = { ["Khasab"] = {	"NavWpt-DQ29",
 										   "NavWpt-CQ93",
 										   "NavWpt-CQ70",
 										   "AlMarjan-naval-sp",
+										   },
+							["Qeshm"]  =  { "NavWpt-DQ29",
+										   "NavWpt-DQ38",
+										   "NavWpt-DQ27",
+										   "NavWpt-CQ93",
+										   "NavWpt-CQ74",
+										   "NavWpt-Qeshm",
 										   }
-							
 						  }
 
 zones.havadarya = ZoneCommand:new("Havadarya")
@@ -3923,23 +3935,398 @@ zones.gori:defineUpgrades({
 
 --------------------- END: Gori ----------------------------------------------------------------------------------
 
+------------------- START: Sarhez ------------DONE----------------------------------------------------------------------
 
+zones.sarhez = ZoneCommand:new("Sarhez")
+zones.sarhez.initialState = { side = 1 }
+zones.sarhez.maxResource = 25000
+zones.sarhez.motherland = true
+zones.sarhez:defineUpgrades({
+    [1] = {
+        presets.upgrades.basic.watchTwr:extend({
+            name='sarhez-tower-red',
+            products = {
+				presets.defenses.red.infantry1:extend({name='sarhez-infantry-red'}),
+				presets.defenses.red.infantry2:extend({name='sarhez-infantry-red-2'}),
+				presets.special.red.infantry:extend({name='sarhez-defense-red'})
+            }
+        }),
+        presets.upgrades.basic.tent:extend({
+			name='sarhez-tent-red',
+			products = {
+				presets.defenses.red.shorad1:extend({name='sarhez-shorad-red-1'}),
+				presets.defenses.red.shorad2:extend({name='sarhez-shorad-red-2'}),
+				presets.defenses.red.sa6:extend({name='sarhez-sam-red'})
+			}
+		}),
+		presets.upgrades.supply.factory1:extend({
+			name='sarhez-facotry-red-1',
+			products = {
+				presets.missions.supply.convoyBig:extend({name='sarhez-convoy-red-1'}),
+				presets.missions.supply.convoyBig:extend({name='sarhez-convoy-red-2'}),
+				
+			}
+		}),
+		presets.upgrades.supply.factory1:extend({
+			name='sarhez-facotry-red-2',
+			products = {
+				presets.missions.supply.convoyBig:extend({name='sarhez-convoy-red-3'}),
+				presets.missions.supply.convoyBig:extend({name='sarhez-convoy-red-4'}),
+				
+			}
+		}),
+		presets.upgrades.supply.factory1:extend({
+			name='sarhez-facotry-red-3',
+			products = {
+				presets.missions.supply.convoyBig:extend({name='sarhez-convoy-red-5'}),
+				presets.missions.supply.convoyBig:extend({name='sarhez-convoy-red-6'}),
+				
+			}
+		}),
+    },
+    [2] = {
+        presets.upgrades.basic.watchTwr:extend({
+            name='sarhez-tower-blue',
+            products = {
+				presets.defenses.blue.infantry1:extend({name='sarhez-infantry-blue'}),
+				presets.special.blue.infantry:extend({name='sarhez-defense-blue'})
+            }
+        }),
+        presets.upgrades.basic.tent:extend({
+			name='sarhez-tent-blue',
+			products = {
+				presets.defenses.blue.shorad1:extend({name='sarhez-shorad-blue-1'}),
+				presets.defenses.blue.shorad2:extend({name='sarhez-shorad-blue-2'})
+			}
+		}),
+		presets.upgrades.attack.smallService:extend({
+			name='sarhez-service-blue',
+			products = {
+			}
+		})
+    }
+})
 
+--------------------- END: Sarhez ----------------------------------------------------------------------------------
+
+------------------- START: Gowdegaz ------------DONE----------------------------------------------------------------------
+
+zones.gowdegaz = ZoneCommand:new("Gowdegaz")
+zones.gowdegaz.initialState = { side = 1 }
+zones.gowdegaz.maxResource = 25000
+zones.gowdegaz.motherland = true
+zones.gowdegaz:defineUpgrades({
+    [1] = {
+        presets.upgrades.basic.watchTwr:extend({
+            name='gowdegaz-tower-red',
+            products = {
+				presets.defenses.red.infantry1:extend({name='gowdegaz-infantry-red'}),
+				presets.defenses.red.infantry2:extend({name='gowdegaz-infantry-red-2'}),
+				presets.special.red.infantry:extend({name='gowdegaz-defense-red'})
+            }
+        }),
+        presets.upgrades.basic.tent:extend({
+			name='gowdegaz-tent-red',
+			products = {
+				presets.defenses.red.shorad1:extend({name='gowdegaz-shorad-red-1'}),
+				presets.defenses.red.shorad2:extend({name='gowdegaz-shorad-red-2'}),
+				presets.defenses.red.sa6:extend({name='gowdegaz-sam-red'})
+			}
+		}),
+		presets.upgrades.supply.factory2:extend({
+			name='gowdegaz-facotry-red-1',
+			products = {
+				presets.missions.supply.convoyBig:extend({name='gowdegaz-convoy-red-1'}),
+				presets.missions.supply.convoyBig:extend({name='gowdegaz-convoy-red-2'}),
+				
+			}
+		}),
+		presets.upgrades.supply.factory2:extend({
+			name='gowdegaz-facotry-red-2',
+			products = {
+				presets.missions.supply.convoyBig:extend({name='gowdegaz-convoy-red-3'}),
+				presets.missions.supply.convoyBig:extend({name='gowdegaz-convoy-red-4'}),
+				
+			}
+		}),
+    },
+    [2] = {
+        presets.upgrades.basic.watchTwr:extend({
+            name='gowdegaz-tower-blue',
+            products = {
+				presets.defenses.blue.infantry1:extend({name='gowdegaz-infantry-blue'}),
+				presets.special.blue.infantry:extend({name='gowdegaz-defense-blue'})
+            }
+        }),
+        presets.upgrades.basic.tent:extend({
+			name='gowdegaz-tent-blue',
+			products = {
+				presets.defenses.blue.shorad1:extend({name='gowdegaz-shorad-blue-1'}),
+				presets.defenses.blue.shorad2:extend({name='gowdegaz-shorad-blue-2'})
+			}
+		}),
+		presets.upgrades.attack.smallService:extend({
+			name='gowdegaz-service-blue',
+			products = {
+			}
+		})
+    }
+})
+
+--------------------- END: Gowdegaz ----------------------------------------------------------------------------------
+
+------------------- START: SayehKhvosh ------------DONE----------------------------------------------------------------------
+
+zones.sayehkhvosh = ZoneCommand:new("SayehKhvosh")
+zones.sayehkhvosh.initialState = { side = 1 }
+zones.sayehkhvosh.maxResource = 25000
+zones.sayehkhvosh.motherland = true
+zones.sayehkhvosh:defineUpgrades({
+    [1] = {
+        presets.upgrades.basic.watchTwr:extend({
+            name='sayehkhvosh-tower-red',
+            products = {
+				presets.defenses.red.infantry1:extend({name='sayehkhvosh-infantry-red'}),
+				presets.defenses.red.infantry2:extend({name='sayehkhvosh-infantry-red-2'}),
+				presets.special.red.infantry:extend({name='sayehkhvosh-defense-red'})
+            }
+        }),
+        presets.upgrades.basic.tent:extend({
+			name='sayehkhvosh-tent-red',
+			products = {
+				presets.defenses.red.shorad1:extend({name='sayehkhvosh-shorad-red-1'}),
+				presets.defenses.red.shorad2:extend({name='sayehkhvosh-shorad-red-2'}),
+				presets.defenses.red.sa3:extend({name='sayehkhvosh-sam-red'})
+			}
+		}),
+		presets.upgrades.supply.generator:extend({
+			name='sayehkhvosh-generator-red-1',
+			products = {
+				presets.missions.supply.helo:extend({name='sayehkhvosh-supply-red-1'}),
+				presets.missions.supply.helo:extend({name='sayehkhvosh-supply-red-2'}),
+				
+			}
+		}),
+		presets.upgrades.supply.generator:extend({
+			name='sayehkhvosh-generator-red-2',
+			products = {
+				presets.missions.supply.helo:extend({name='sayehkhvosh-supply-red-3'}),
+				presets.missions.supply.helo:extend({name='sayehkhvosh-supply-red-4'}),
+				presets.missions.supply.helo:extend({name='sayehkhvosh-supply-red-5'}),
+				
+			}
+		}),
+    },
+    [2] = {
+        presets.upgrades.basic.watchTwr:extend({
+            name='sayehkhvosh-tower-blue',
+            products = {
+				presets.defenses.blue.infantry1:extend({name='sayehkhvosh-infantry-blue'}),
+				presets.special.blue.infantry:extend({name='sayehkhvosh-defense-blue'})
+            }
+        }),
+        presets.upgrades.basic.tent:extend({
+			name='sayehkhvosh-tent-blue',
+			products = {
+				presets.defenses.blue.shorad1:extend({name='sayehkhvosh-shorad-blue-1'}),
+				presets.defenses.blue.shorad2:extend({name='sayehkhvosh-shorad-blue-2'})
+			}
+		}),
+		presets.upgrades.attack.smallService:extend({
+			name='sayehkhvosh-service-blue',
+			products = {
+			}
+		})
+    }
+})
+
+--------------------- END: SayehKhvosh ----------------------------------------------------------------------------------
+
+------------------- START: Lavan -----------DONE-----------------------------------------------------------------------
+
+zones.lavan = ZoneCommand:new("Lavan")
+zones.lavan.initialState = { side = 1 }
+zones.lavan.airbaseName = 'Lavan Island'
+zones.lavan.maxResource = 25000
+zones.lavan.motherland = true
+zones.lavan:defineUpgrades({
+    [1] = {
+        presets.upgrades.basic.dispatchBarracks:extend({
+            name='lavan-barracks-red',
+            products = {
+				presets.special.red.infantry:extend({name='lavan-defense-red'}),
+				presets.defenses.red.infantry2:extend({name='lavan-infantry-red-2'}),
+            }
+        }),
+        presets.upgrades.supply.storehouse:extend({
+            name='lavan-store-red',
+            products = {
+            }
+        }),
+        presets.upgrades.airdef.antenna:extend({
+            name='lavan-antenna-red',
+            products = {
+				presets.defenses.red.sa10:extend({name='lavan-sam-red'}),
+				presets.defenses.red.shorad1:extend({name='lavan-shorad-red'}),
+            }
+        })
+    },
+    [2] = {
+        presets.upgrades.basic.dispatchBarracks:extend({
+            name='lavan-barracks-blue',
+            products = {
+				presets.special.blue.infantry:extend({name='lavan-defense-blue'}),
+				presets.defenses.blue.infantry3:extend({name='lavan-infantry-blue-1'}),
+            }
+        }),
+        presets.upgrades.supply.storehouse:extend({
+            name='lavan-store-blue',
+            products = {
+            }
+        }),
+        presets.upgrades.airdef.antenna:extend({
+            name='lavan-antenna-blue',
+            products = {
+                presets.defenses.blue.patriot:extend({name='lavan-sam-blue'}),
+				presets.defenses.blue.shorad2:extend({name='lavan-shorad-blue'}),
+            }
+        }),
+    }
+})
+
+--------------------- END: Lavan ----------------------------------------------------------------------------------
+
+------------------- START: BandarLengeh -----------DONE-----------------------------------------------------------------------
+
+zones.bandarlengeh = ZoneCommand:new("BandarLengeh")
+zones.bandarlengeh.initialState = { side = 1 }
+zones.bandarlengeh.airbaseName = 'Bandar Lengeh'
+zones.bandarlengeh.maxResource = 25000
+zones.bandarlengeh.motherland = true
+zones.bandarlengeh:defineUpgrades({
+    [1] = {
+        presets.upgrades.basic.dispatchBarracks:extend({
+            name='bandarlengeh-barracks-red',
+            products = {
+				presets.special.red.infantry:extend({name='bandarlengeh-defense-red'}),
+				presets.defenses.red.infantry2:extend({name='bandarlengeh-infantry-red-2'}),
+            }
+        }),
+        presets.upgrades.supply.storehouse:extend({
+            name='bandarlengeh-store-red',
+            products = {
+				presets.missions.supply.helo:extend({name='bandarlengeh-supply-red-1'}),
+				presets.missions.supply.helo:extend({name='bandarlengeh-supply-red-2'}),
+            }
+        }),
+		presets.upgrades.supply.storehouse:extend({
+            name='bandarlengeh-store-red-2',
+            products = {
+				presets.missions.supply.helo:extend({name='bandarlengeh-supply-red-3'}),
+				presets.missions.supply.helo:extend({name='bandarlengeh-supply-red-4'}),
+            }
+        }),
+        presets.upgrades.airdef.antenna:extend({
+            name='bandarlengeh-antenna-red',
+            products = {
+				presets.defenses.red.sa3:extend({name='bandarlengeh-sam-red'}),
+				presets.defenses.red.shorad3:extend({name='bandarlengeh-shorad-red'}),
+            }
+        })
+    },
+    [2] = {
+        presets.upgrades.basic.dispatchBarracks:extend({
+            name='bandarlengeh-barracks-blue',
+            products = {
+				presets.special.blue.infantry:extend({name='bandarlengeh-defense-blue'}),
+				presets.defenses.blue.infantry3:extend({name='bandarlengeh-infantry-blue-1'}),
+            }
+        }),
+        presets.upgrades.supply.storehouse:extend({
+            name='bandarlengeh-store-blue',
+            products = {
+            }
+        }),
+        presets.upgrades.airdef.antenna:extend({
+            name='bandarlengeh-antenna-blue',
+            products = {
+                presets.defenses.blue.hawk:extend({name='bandarlengeh-sam-blue'}),
+				presets.defenses.blue.shorad2:extend({name='bandarlengeh-shorad-blue'}),
+            }
+        }),
+    }
+})
+
+--------------------- END: BandarLengeh ----------------------------------------------------------------------------------
+
+------------------- START: Lar -----------DONE-----------------------------------------------------------------------
+
+zones.lar = ZoneCommand:new("Lar")
+zones.lar.initialState = { side = 1 }
+zones.lar.airbaseName = 'Bandar Lengeh'
+zones.lar.maxResource = 25000
+zones.lar.motherland = true
+zones.lar:defineUpgrades({
+    [1] = {
+        presets.upgrades.basic.dispatchBarracks:extend({
+            name='lar-barracks-red',
+            products = {
+				presets.special.red.infantry:extend({name='lar-defense-red'}),
+				presets.defenses.red.infantry2:extend({name='lar-infantry-red-2'}),
+            }
+        }),
+        presets.upgrades.supply.storehouse:extend({
+            name='lar-store-red',
+            products = {
+				presets.missions.supply.convoy:extend({name='lar-convoy-red-1'}),
+				presets.missions.supply.convoy:extend({name='lar-convoy-red-2'}),
+            }
+        }),
+		presets.upgrades.supply.storehouse:extend({
+            name='lar-store-red-2',
+            products = {
+				presets.missions.supply.convoy:extend({name='lar-convoy-red-3'}),
+				presets.missions.supply.convoy:extend({name='lar-convoy-red-4'}),
+            }
+        }),
+        presets.upgrades.airdef.antenna:extend({
+            name='lar-antenna-red',
+            products = {
+				presets.defenses.red.sa10:extend({name='lar-sam-red'}),
+				presets.defenses.red.shorad3:extend({name='lar-shorad-red'}),
+				presets.missions.patrol.aircraft:extend({name='lar-patrol-red-1'}),
+				presets.missions.patrol.aircraft:extend({name='lar-patrol-red-2'}),
+            }
+        })
+    },
+    [2] = {
+        presets.upgrades.basic.dispatchBarracks:extend({
+            name='lar-barracks-blue',
+            products = {
+				presets.special.blue.infantry:extend({name='lar-defense-blue'}),
+				presets.defenses.blue.infantry3:extend({name='lar-infantry-blue-1'}),
+            }
+        }),
+        presets.upgrades.supply.storehouse:extend({
+            name='lar-store-blue',
+            products = {
+            }
+        }),
+        presets.upgrades.airdef.antenna:extend({
+            name='lar-antenna-blue',
+            products = {
+                presets.defenses.blue.hawk:extend({name='lar-sam-blue'}),
+				presets.defenses.blue.shorad2:extend({name='lar-shorad-blue'}),
+            }
+        }),
+    }
+})
+
+--------------------- END: Lar ----------------------------------------------------------------------------------
 
 --Airports
---Lavan (Treat as SAM Island and CAP spawn)
---Bandar Lengeh (Treat as CAP spawn)
 --Lar (Should be supply point, have lots of trucks, SA-5 or SA-10 SAM and a CAP, and SEAD spawn for red )
 --
-
---Road Base
---SayehKhvosh (Helo base to feed supplys from LAR to Bandar Lengeh, Gori and Qeshm)
---Gowdegaz
-
-
---RED Generator
---Sarhez (Lots of trucks, SA6 SAM and 2 SHORAD systems)
-
 
 
 
@@ -4014,7 +4401,24 @@ zones.gori:defineUpgrades({
 	cm:addConnection('Qeshm','Tunb',true) --
 	cm:addConnection('Qeshm','Gori',false) --
 	cm:addConnection('Gori','Tunb',true) --
-	cm:addConnection('Gori','Kish',true) --
+	
+	
+	cm:addConnection('Lar','BandarLengeh',false) --
+	cm:addConnection('Lar','SayehKhvosh',false) --
+	cm:addConnection('Lar','Havadarya',false) --
+	cm:addConnection('Sarhez','Havadarya',false) --
+	cm:addConnection('Sarhez','SayehKhvosh',false) --
+	cm:addConnection('Gowdegaz','SayehKhvosh',false) --
+	cm:addConnection('Gowdegaz','BandarLengeh',false) --
+	cm:addConnection('BandarLengeh','Gori',true) --
+	cm:addConnection('BandarLengeh','Kish',true) --
+	cm:addConnection('BandarLengeh','Tunb',true) --
+	cm:addConnection('SayehKhvosh','Qeshm',true) --
+	cm:addConnection('SayehKhvosh','Gori',true) --
+	cm:addConnection('Lavan','Kish',true) --
+	
+	
+	
 --	cm:addConnection('SirAbuNuayr','SirriIsland',true) --
 --  cm:addConnection('SirAbuNuayr','Harbor',true) --
 	--cm:addConnection('Kish','AlDhafra',true)
@@ -4145,11 +4549,12 @@ end, {}, timer.getTime()+30)
 
 --supply injection
 local blueSupply = {'offmap-supply-blue-1','offmap-supply-blue-2','offmap-supply-blue-3','offmap-supply-blue-4','offmap-supply-blue-5'}
-local redSupply = {'offmap-supply-red-1','offmap-supply-red-2','offmap-supply-red-3','offmap-supply-red-4'}
+local redSupply = {'offmap-supply-red-1','offmap-supply-red-2','offmap-supply-red-3','offmap-supply-red-4','offmap-supply-red-5','offmap-supply-red-6'}
 local offmapZones = {
 	zones.liwa,
 	zones.aldhafra,
 	zones.bandar,
+	zones.lar,
 --	zones.beirut,
 --	zones.palmyra,
 --	zones.alassad,
