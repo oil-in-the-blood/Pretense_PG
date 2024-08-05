@@ -4581,7 +4581,7 @@ do
 	ZoneCommand.supplyBuildSpeed = Config.supplyBuildSpeed
 	ZoneCommand.missionValidChance = 0.9
 	ZoneCommand.missionBuildSpeedReduction = Config.missionBuildSpeedReduction
-	ZoneCommand.revealTime = 100000
+	ZoneCommand.revealTime = 0
 	ZoneCommand.staticRegistry = {}
 
 	ZoneCommand.modes = {
