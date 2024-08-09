@@ -668,6 +668,7 @@ do
 	PlayerLogistics.allowedTypes = {}
 	PlayerLogistics.allowedTypes['Mi-24P'] = { supplies = true, personCapacity = 8 }
 	PlayerLogistics.allowedTypes['Mi-8MT'] = { supplies = true, personCapacity = 24 }
+	PlayerLogistics.allowedTypes['CH-47Fbl1'] = { supplies = true, personCapacity = 30 }
 	PlayerLogistics.allowedTypes['UH-1H'] = { supplies = true, personCapacity = 12}
 	PlayerLogistics.allowedTypes['Hercules'] = { supplies = true, personCapacity = 92 }
 	PlayerLogistics.allowedTypes['UH-60L'] = { supplies = true, personCapacity = 12 }
@@ -687,6 +688,7 @@ do
 		manpads = 'manpads',
 		spy = 'spy',
 		rapier = 'rapier',
+		arty = 'arty',
 		extractable = 'extractable'
 	}
 
@@ -705,6 +707,8 @@ do
 			return "Spy"
 		elseif infType==PlayerLogistics.infantryTypes.rapier then
 			return "Rapier SAM"
+		elseif infType==PlayerLogistics.infantryTypes.arty then
+			return "Artillery Squad"
 		elseif infType==PlayerLogistics.infantryTypes.extractable then
 			return "Extracted infantry"
 		end
@@ -9553,7 +9557,17 @@ do
         skill = "Excellent",
         dataCategory= TemplateDB.type.group
     }
-
+	
+	TemplateDB.templates["arty-squad"] = {
+		units = {
+			"Solider M4 GRG",
+			"Soldier M4 GRG",
+			"L118_Unit"
+		},
+		skill = "Excellent",
+		dataCategory=TemplateDB.type.Group
+	}
+	
     TemplateDB.templates["tent"] = { type="FARP Tent", category="Fortifications", shape="PalatkaB", dataCategory=TemplateDB.type.static }
 
     TemplateDB.templates["barracks"] = { type="house1arm", category="Fortifications", shape=nil, dataCategory=TemplateDB.type.static }

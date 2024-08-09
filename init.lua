@@ -4467,17 +4467,17 @@ invincible = CarrierCommand:new("HMS Invincible", 1500, invinciblemap, {
 	radio = 139500000
 }, 30000)
 
---invincible:addSupportFlight("Gambit Flight", 2000, CarrierCommand.supportTypes.strike, {altitude = 15000})
---invincible:addSupportFlight("Ghost Flight", 2000, CarrierCommand.supportTypes.strike, {altitude = 15000})
---invincible:addSupportFlight("Titan Flight", 3000, CarrierCommand.supportTypes.transport, {altitude = 500})
+invincible:addSupportFlight("Gambit Flight", 2000, CarrierCommand.supportTypes.strike, {altitude = 15000})
+invincible:addSupportFlight("Ghost Flight", 2000, CarrierCommand.supportTypes.strike, {altitude = 15000})
+invincible:addSupportFlight("Titan Flight", 3000, CarrierCommand.supportTypes.transport, {altitude = 500})
 invincible:addSupportFlight("Vandal Flight", 3000, CarrierCommand.supportTypes.transport, {altitude = 500})
 
 stennis:addSupportFlight("Shadow Flight", 1000, CarrierCommand.supportTypes.cap, {altitude = 20000, range=25})
---stennis:addSupportFlight("Cobalt Flight", 1000, CarrierCommand.supportTypes.cap, {altitude = 15000, range=25})
---stennis:addSupportFlight("Apex Flight", 2000, CarrierCommand.supportTypes.strike, {altitude = 20000})
---stennis:addSupportFlight("Darkstar Flight", 5000, CarrierCommand.supportTypes.awacs, {altitude = 30000, freq=261})
---stennis:addSupportFlight("Mauler Flight", 3000, CarrierCommand.supportTypes.tanker, {altitude = 19000, freq=261.5, tacan=45})
---stennis:addExtraSupport("BGM-109B", 10000, CarrierCommand.supportTypes.mslstrike, {salvo = 10, wpType = 'weapons.missiles.BGM_109B'})
+stennis:addSupportFlight("Cobalt Flight", 1000, CarrierCommand.supportTypes.cap, {altitude = 25000, range=25})
+stennis:addSupportFlight("Apex Flight", 2000, CarrierCommand.supportTypes.strike, {altitude = 20000})
+stennis:addSupportFlight("Darkstar Flight", 5000, CarrierCommand.supportTypes.awacs, {altitude = 30000, freq=261})
+stennis:addSupportFlight("Mauler Flight", 3000, CarrierCommand.supportTypes.tanker, {altitude = 19000, freq=261.5, tacan=45})
+stennis:addExtraSupport("BGM-109B", 10000, CarrierCommand.supportTypes.mslstrike, {salvo = 10, wpType = 'weapons.missiles.BGM_109B'})
 
 -- PlayerLogistics:registerSquadGroup(squadType,              groupname,       weight,cost,jobtime,extracttime, squadSize)
 pl:registerSquadGroup(PlayerLogistics.infantryTypes.capture,  'capture-squad',  700, 200, 60,    60*30, 4, 2)
@@ -4487,6 +4487,7 @@ pl:registerSquadGroup(PlayerLogistics.infantryTypes.engineer, 'engineer-squad', 
 pl:registerSquadGroup(PlayerLogistics.infantryTypes.manpads,  'manpads-squad',  900, 500, 60*20, 60*30, 5, 2)
 pl:registerSquadGroup(PlayerLogistics.infantryTypes.spy,      'spy-squad',      100, 300, 60*10, 60*30, 1, 2)
 pl:registerSquadGroup(PlayerLogistics.infantryTypes.rapier,   'rapier-squad',   1200,2000,60*60, 60*30, 8, 2)
+pl:registerSquadGroup(PlayerLogistics.infantryTypes.arty,     'arty-squad',     3000,4000,60*60, 60*60, 16, 2)
 
 Group.getByName('jtacDrone'):destroy()
 CommandFunctions.jtac = JTAC:new({name = 'jtacDrone'})
