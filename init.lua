@@ -4487,7 +4487,7 @@ pl:registerSquadGroup(PlayerLogistics.infantryTypes.engineer, 'engineer-squad', 
 pl:registerSquadGroup(PlayerLogistics.infantryTypes.manpads,  'manpads-squad',  900, 500, 60*20, 60*30, 5, 2)
 pl:registerSquadGroup(PlayerLogistics.infantryTypes.spy,      'spy-squad',      100, 300, 60*10, 60*30, 1, 2)
 pl:registerSquadGroup(PlayerLogistics.infantryTypes.rapier,   'rapier-squad',   1200,2000,60*60, 60*30, 8, 2)
-pl:registerSquadGroup(PlayerLogistics.infantryTypes.arty,     'arty-squad',     3000,4000,60*60, 60*60, 16, 2)
+pl:registerSquadGroup(PlayerLogistics.infantryTypes.arty,     'arty-squad',     2000,2000,60*60, 60*60, 5, 2)
 
 Group.getByName('jtacDrone'):destroy()
 CommandFunctions.jtac = JTAC:new({name = 'jtacDrone'})

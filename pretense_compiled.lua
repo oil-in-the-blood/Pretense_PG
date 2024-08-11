@@ -689,6 +689,7 @@ do
 		spy = 'spy',
 		rapier = 'rapier',
 		arty = 'arty',
+		artybig = 'artybig',
 		extractable = 'extractable'
 	}
 
@@ -709,6 +710,8 @@ do
 			return "Rapier SAM"
 		elseif infType==PlayerLogistics.infantryTypes.arty then
 			return "Artillery Squad"
+		elseif infType==PlayerLogistics.infantryTypes.artybig then
+			return "Artillery Squad Big"
 		elseif infType==PlayerLogistics.infantryTypes.extractable then
 			return "Extracted infantry"
 		end
@@ -9560,12 +9563,25 @@ do
 	
 	TemplateDB.templates["arty-squad"] = {
 		units = {
-			"Solider M4 GRG",
 			"Soldier M4 GRG",
-			"L118_Unit"
+			"Soldier M4 GRG",
+			"2B11 mortar",
+			"2B11 mortar",
+			"2B11 mortar",
+			"Soldier M249",
 		},
 		skill = "Excellent",
-		dataCategory=TemplateDB.type.Group
+		dataCategory=TemplateDB.type.group
+	}
+	
+		TemplateDB.templates["arty-squad-big"] = {
+		units = {
+			"Soldier M4 GRG",
+			"Soldier M4 GRG",
+			"L118_Unit",
+		},
+		skill = "Excellent",
+		dataCategory=TemplateDB.type.group
 	}
 	
     TemplateDB.templates["tent"] = { type="FARP Tent", category="Fortifications", shape="PalatkaB", dataCategory=TemplateDB.type.static }
@@ -15776,8 +15792,12 @@ do
     ]] 
     function SquadTracker:processInfantrySquad(squad)
         local gr = Group.getByName(squad.name)
-        if not gr then return true end
+        if not gr then
+			env.info('SquadTracker - '..squad.name..' group doesnt exist, return remove')
+			return true
+		end
 		if gr:getSize()==0 then 
+			env.info('SquadTracker - '..squad.name..' group size = 0, return remove')
 			gr:destroy()
 			return true
 		end
