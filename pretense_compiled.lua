@@ -676,7 +676,7 @@ do
 	PlayerLogistics.allowedTypes['Ka-50_3'] = { supplies = false }
 	PlayerLogistics.allowedTypes['SA342L'] = { supplies = false, personCapacity = 2}
 	PlayerLogistics.allowedTypes['SA342M'] = { supplies = false, personCapacity = 2}
-	PlayerLogistics.allowedTypes['OH58D'] = { supplies = false}
+	PlayerLogistics.allowedTypes['OH58D'] = { supplies = false, personCapacity = 2}
 	PlayerLogistics.allowedTypes['SA342Minigun'] = { supplies = false, personCapacity = 2}
 	PlayerLogistics.allowedTypes['AH-64D_BLK_II'] = { supplies = false }
 
@@ -2571,6 +2571,8 @@ do
 		if not group.state then 
 			group.state = 'takeoff' 
 			env.info('GroupMonitor: processAir ['..group.name..'] taking off')
+		else
+			env.info('GroupMonitor: processAir ['..group.name..'] in state: '..group.state)
 		end
 		
 		if group.state =='takeoff' then

@@ -103,23 +103,25 @@ do
 	TemplateDB.templates["infantry-blue-2"] = {
 		units = { 
 			"Soldier stinger",
-			"M1A2_SEP_V3",
-			"M1A2_SEP_V3",
+			"M1A2C_SEP_V3",
+			"M1A2C_SEP_V3",
+			"VAB_Mephisto",
 			"Soldier M4 GRG",
 			"Soldier M4 GRG",
 			"Soldier M4 GRG",
 			"Soldier M4 GRG",
 			"Soldier M4 GRG"
 		},
-		skill = "Good",
+		skill = "Excellent",
 		dataCategory= TemplateDB.type.group
 	}
 
 	TemplateDB.templates["infantry-blue-3"] = {
 		units = { 
-			"M1A2_SEP_V3",
+			"M1A2C_SEP_V3",
 			"M-2 Bradley",
 			"M-2 Bradley",
+			"VAB_Mephisto",
 			"Soldier M4 GRG",
 			"Soldier M4 GRG",
 			"Soldier M4 GRG",
