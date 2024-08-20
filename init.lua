@@ -1587,7 +1587,7 @@ zones.bravo = ZoneCommand:new("Bravo")
 zones.bravo.initialState = { side = 1 }
 zones.bravo.maxResource = 30000
 zones.bravo.isHeloSpawn = true
-zones.bravo.airbaseName = 'BravoFarp'
+zones.bravo.airbaseName = 'bravo-FARP'
 zones.bravo:defineUpgrades({
     [1] = {
         presets.upgrades.basic.watchTwr:extend({
@@ -1944,7 +1944,7 @@ zones.alwadiyat.initialState = { side = 1 }
 zones.alwadiyat.maxResource = 45000
 zones.alwadiyat.isHeloSpawn = true
 zones.alwadiyat.keepActive = true
-zones.alwadiyat.airbaseName = 'AlWadiyat'
+zones.alwadiyat.airbaseName = 'alwadiyat-FARP'
 zones.alwadiyat:defineUpgrades({
     [1] = {
         presets.upgrades.basic.watchTwr:extend({
@@ -2916,7 +2916,7 @@ zones.dibba.initialState = { side = 1 }
 zones.dibba.maxResource = 50000
 zones.dibba.isHeloSpawn = true
 zones.dibba.keepActive = true
-zones.dibba.airbaseName = 'DibbaF'
+zones.dibba.airbaseName = 'dibba-FARP'
 zones.dibba:defineUpgrades({
     [1] = {
         presets.upgrades.basic.dispatchBarracks:extend({
@@ -4265,7 +4265,7 @@ zones.bandarlengeh:defineUpgrades({
 
 zones.lar = ZoneCommand:new("Lar")
 zones.lar.initialState = { side = 1 }
-zones.lar.airbaseName = 'Bandar Lengeh'
+zones.lar.airbaseName = 'Lar'
 zones.lar.maxResource = 25000
 zones.lar.motherland = true
 zones.lar:defineUpgrades({
